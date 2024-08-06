@@ -229,7 +229,7 @@
 				open 	= "xdg-open"; 
 				erwp 	= "nvim /tmp/rwptimer"; 
 				ewt 	= "nvim /tmp/wtimer"; 
-				ehypr	= "nvim $HOME/.config/hyprland";
+				ehypr	= "nvim $HOME/.config/hypr/.";
 			};
 
 			initExtra = /*bash*/''
@@ -292,7 +292,7 @@
 
 				WALLPAPERS_DIR="$LOCAL_CONFIG_DIR/wallpapers";
 				NSFW_WALLPAPERS="$WALLPAPERS_DIR/wallpapers/NSFW_WALLPAPERS";
-				SFW_WALLPAPERS="$LOCAL_CONFIG_DIR/wallpapers/SFW_WALLPAPERS";
+				SFW_WALLPAPERS="$WALLPAPERS_DIR/wallpapers/SFW_WALLPAPERS";
 
 				BROWSER = "firefox";
 				LANGUAGE="en_US.UTF-8";
