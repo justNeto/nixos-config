@@ -263,6 +263,8 @@
 
 				autoload edit-command-line; zle -N edit-command-line
 				bindkey '^e' edit-command-line
+                bindkey '^t' clear-screen
+                bindkey -r '^l'
 
 				bindkey '^?' backward-delete-char # backspace key sequence
 				bindkey "^[[P" delete-char # delete key sequence
@@ -271,7 +273,6 @@
 				bindkey -s '^s' 'lfrun $(fzf)\n'
 				bindkey -s '^p' 'youtube-playlists\n' # select a playlist to listen to
 				bindkey -s '^o' 'lfcd\n' # go to last dir
-				bindkey -s '^t' clear-screen
 				'';
 
 			sessionVariables = {

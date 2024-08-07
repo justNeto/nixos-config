@@ -69,6 +69,9 @@
 	# List packages installed in system profile. To search, run:
 	nix.settings.experimental-features = ["nix-command" "flakes" ];
 
+    # Enable resetting ZSA keyboards
+    hardware.keyboard.zsa.enable = true;
+
 	environment = {
 
 		systemPackages = with pkgs; [
