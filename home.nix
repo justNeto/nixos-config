@@ -99,7 +99,7 @@
 
 						icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
 						definedAliases = [ "@np" ];
-					};				
+					};
 
 					"NixOS Wiki" = {
 						urls = [{ template = "https://wiki.nixos.org/index.php?search={searchTerms}"; }];
@@ -192,43 +192,43 @@
 			shellAliases = {
 
 				# Sudo aliases I need available
-				cs 	= "sudo chmod +x"; 
-				sn 	= "sudoedit"; 
-				rmd 	= "sudo rm -rf"; 
-				srwpt 	= "sudo cat /tmp/rwptimer"; 
+				cs 	= "sudo chmod +x";
+				sn 	= "sudoedit";
+				rmd 	= "sudo rm -rf";
+				srwpt 	= "sudo cat /tmp/rwptimer";
 				awp	= "sudo chmod a+w";
 
 				# Regular aliases
-				cd 	= "z"; 
-				cp 	= "cp -iv"; 
-				mv 	= "mv -iv"; 
-				rm 	= "rm -vI"; 
-				mkd 	= "mkdir -pv"; 
+				cd 	= "z";
+				cp 	= "cp -iv";
+				mv 	= "mv -iv";
+				rm 	= "rm -vI";
+				mkd 	= "mkdir -pv";
 				ffmpeg 	= "ffmpeg -hide_banner";
-				ls 	= "lsd --sort extension --group-dirs first --total-size --permission octal"; 
-				grep 	= "grep --color=auto"; 
-				diff 	= "diff --color=auto"; 
-				cat 	= "bat"; 
-				gcl 	= "git clone"; 
-				gA 	= "git add -A"; 
-				ga 	= "git add"; 
-				gs 	= "git status"; 
-				gc 	= "git commit"; 
-				gps 	= "git push"; 
-				gpl 	= "git pull"; 
-				gb 	= "git branch"; 
-				gnb 	= "git checkout -b"; 
-				gcb 	= "git checkout"; 
+				ls 	= "lsd --sort extension --group-dirs first --total-size --permission octal";
+				grep 	= "grep --color=auto";
+				diff 	= "diff --color=auto";
+				cat 	= "bat";
+				gcl 	= "git clone";
+				gA 	= "git add -A";
+				ga 	= "git add";
+				gs 	= "git status";
+				gc 	= "git commit";
+				gps 	= "git push";
+				gpl 	= "git pull";
+				gb 	= "git branch";
+				gnb 	= "git checkout -b";
+				gcb 	= "git checkout";
 				gbu	= "git remote update origin --prune";
-				m 	= "cmatrix"; 
-				nf 	= "fastfetch"; 
-				img 	= "imv"; 
-				vid 	= "mpv"; 
-				aud 	= "mpv"; 
-				pdf 	= "zathura"; 
-				open 	= "xdg-open"; 
-				erwp 	= "nvim /tmp/rwptimer"; 
-				ewt 	= "nvim /tmp/wtimer"; 
+				m 	= "cmatrix";
+				nf 	= "fastfetch";
+				img 	= "imv";
+				vid 	= "mpv";
+				aud 	= "mpv";
+				pdf 	= "zathura";
+				open 	= "xdg-open";
+				erwp 	= "nvim /tmp/rwptimer";
+				ewt 	= "nvim /tmp/wtimer";
 				ehypr	= "nvim $HOME/.config/hypr/.";
 			};
 
@@ -271,6 +271,7 @@
 				bindkey -s '^s' 'lfrun $(fzf)\n'
 				bindkey -s '^p' 'youtube-playlists\n' # select a playlist to listen to
 				bindkey -s '^o' 'lfcd\n' # go to last dir
+				bindkey -s '^t' clear-screen
 				'';
 
 			sessionVariables = {
