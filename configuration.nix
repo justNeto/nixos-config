@@ -85,6 +85,7 @@
 			nerdfonts
             gnumake
             cmake
+            openssl
 			inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
 		];
 
