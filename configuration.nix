@@ -83,6 +83,8 @@
 			gcc
 			libnotify
 			nerdfonts
+            gnumake
+            cmake
 			inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
 		];
 

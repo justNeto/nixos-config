@@ -85,6 +85,8 @@
 
 				settings = {
 					full-screen-api.ignore-widgets = true;
+                    browser.startup.homepage = "https://search.brave.com/";
+                    browser.search.defaultenginename = "Brave Search";
 				};
 
 				search.engines = {
