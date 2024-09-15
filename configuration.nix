@@ -4,110 +4,111 @@
 
 { config, lib, pkgs, inputs, ... }:
 {
-	imports =
-		[ # Include the results of the hardware scan.
-		./hardware-configuration.nix
-		];
+    imports =
+        [ # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+        ];
 
-# Use the systemd-boot EFI boot loader.
-	boot = {
-		loader = {
-			systemd-boot.enable 	= true;
-			efi.canTouchEfiVariables 	= true;
-			timeout			= 120;
-		};
+    # Use the systemd-boot EFI boot loader.
+    boot = {
+        loader = {
+            systemd-boot.enable 	= true;
+            efi.canTouchEfiVariables 	= true;
+            timeout			= 120;
+        };
 
-		tmp = {
-			cleanOnBoot = true;
-		};
-	};
+        tmp = {
+            cleanOnBoot = true;
+        };
+    };
 
-	networking.hostName = "justNeto-nixos"; # Define your hostname.
-	# Pick only one of the below networking options.
-	# networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-	networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+    networking.hostName = "justNeto-nixos"; # Define your hostname.
+    # Pick only one of the below networking options.
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+        networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
-	# Set your time zone.
-	time.timeZone = "America/Mexico_City";
+    # Set your time zone.
+    time.timeZone = "America/Mexico_City";
 
-	# Select internationalisation properties.
-	i18n.defaultLocale = "en_US.UTF-8";
+    # Select internationalisation properties.
+    i18n.defaultLocale = "en_US.UTF-8";
 
-	# Enable the X11 windowing system.
-	# services.xserver.enable = true;
-	programs.zsh.enable = true;
+    # Enable the X11 windowing system.
+    # services.xserver.enable = true;
+    programs.zsh.enable = true;
 
-	# Enable CUPS to print documents.
-	services.printing.enable = true;
+    # Enable CUPS to print documents.
+    services.printing.enable = true;
 
-	# Documentation for man pages and stuff
-	documentation = {
-		enable = true;
+    # Documentation for man pages and stuff
+    documentation = {
+        enable = true;
 
-		man = {
-			enable = true;
-		};
+        man = {
+            enable = true;
+        };
 
-		dev = {
-			enable = true;
-		};
-	};
+        dev = {
+            enable = true;
+        };
+    };
 
-	# Enable sound.
-	services.pipewire = {
-		enable = true;
-		pulse.enable = true;
-	};
+    # Enable sound.
+    services.pipewire = {
+        enable = true;
+        pulse.enable = true;
+    };
 
-	# Define a user account. Don't forget to set a password with ‘passwd’.
-	users.users.neto = {
-		shell = pkgs.zsh;
-		isNormalUser = true;
-		extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-	};
+    # Define a user account. Don't forget to set a password with ‘passwd’.
+    users.users.neto = {
+        shell = pkgs.zsh;
+        isNormalUser = true;
+        extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    };
 
-	# List packages installed in system profile. To search, run:
-	nix.settings.experimental-features = ["nix-command" "flakes" ];
+    # List packages installed in system profile. To search, run:
+    nix.settings.experimental-features = ["nix-command" "flakes" ];
 
     # Enable resetting ZSA keyboards
     hardware.keyboard.zsa.enable = true;
+    hardware.keyboard.qmk.enable = true;
 
-	environment = {
+    environment = {
 
-		systemPackages = with pkgs; [
-			git
-			neovim
-			wget
-			curl
-			tmux
-			gcc
-			libnotify
-			nerdfonts
-            gnumake
-            cmake
-            openssl
-			inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-		];
+        systemPackages = with pkgs; [
+            git
+                neovim
+                wget
+                curl
+                tmux
+                gcc
+                libnotify
+                nerdfonts
+                gnumake
+                cmake
+                openssl
+                inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+        ];
 
-		variables.EDITOR = "neovim";
+        variables.EDITOR = "neovim";
 
-		sessionVariables = {
-			TERMINAL		= "kitty";
-			NIXOS_OZONE_WL	= "1";
-		};
+        sessionVariables = {
+            TERMINAL		= "kitty";
+            NIXOS_OZONE_WL	= "1";
+        };
 
-		pathsToLink = [ "/share/zsh" ];
-	};
+        pathsToLink = [ "/share/zsh" ];
+    };
 
-	programs.ssh = {
-		startAgent = false;
-	};
+    programs.ssh = {
+        startAgent = false;
+    };
 
-	fonts.packages = with pkgs; [
-		noto-fonts
-		(nerdfonts.override { fonts = [ "Inconsolata" ]; })
-	];
+    fonts.packages = with pkgs; [
+        noto-fonts
+            (nerdfonts.override { fonts = [ "Inconsolata" ]; })
+    ];
 
-	# `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-	system.stateVersion = "24.05"; # Did you read the comment?
+    # `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+    system.stateVersion = "24.05"; # Did you read the comment?
 }
