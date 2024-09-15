@@ -71,6 +71,7 @@
         zoom
         zoxide
         zip
+        qmk
     ];
 
     programs = {
