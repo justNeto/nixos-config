@@ -72,6 +72,7 @@
         zoxide
         zip
         qmk
+        libreoffice
     ];
 
     programs = {
