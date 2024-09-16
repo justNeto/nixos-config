@@ -46,6 +46,7 @@
         python3
         pipe-viewer
         pulsemixer
+        prusa-slicer
         pv
         pywal
         pico-sdk
