@@ -17,6 +17,7 @@
 
     home.packages = with pkgs; [
         ani-cli
+        android-tools
         bat
         beauty-line-icon-theme
         btop
@@ -58,6 +59,7 @@
         steam
         stow
         swww
+        scrcpy
         telegram-desktop
         tree
         vesktop
