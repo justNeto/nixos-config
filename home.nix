@@ -18,6 +18,8 @@
     home.packages = with pkgs; [
         ani-cli
         android-tools
+        android-studio
+        android-studio-tools
         bat
         beauty-line-icon-theme
         btop
@@ -30,6 +32,7 @@
         fzf
         file
         firefox
+        flutter
         fd
         fastfetch
         gimp
