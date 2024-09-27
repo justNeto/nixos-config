@@ -35,6 +35,7 @@
         flutter
         fd
         fastfetch
+        gamescope
         gimp
         grimblast
         hyprpicker
@@ -59,8 +60,8 @@
         ripdrag
         slack
         speedtest-cli
-        steam
         stow
+        steam
         swww
         scrcpy
         telegram-desktop
