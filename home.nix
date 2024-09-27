@@ -64,6 +64,7 @@
         steam
         swww
         scrcpy
+        tor-browser
         telegram-desktop
         tree
         vesktop
