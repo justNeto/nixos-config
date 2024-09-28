@@ -43,6 +43,11 @@
     # Using localtimed for windows/linux dual booting compatibility
     services.localtimed.enable = true;
 
+    # Automount drive
+    services.devmon.enable = true;
+    services.gvfs.enable = true;
+    services.udisks2.enable = true;
+
     # Documentation for man pages and stuff
     documentation = {
         enable = true;
