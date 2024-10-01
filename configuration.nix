@@ -112,10 +112,23 @@
         startAgent = false;
     };
 
-    fonts.packages = with pkgs; [
-        noto-fonts
+    fonts = {
+        enableDefaultPackages = true;
+        packages = with pkgs; [
             (nerdfonts.override { fonts = [ "Inconsolata" ]; })
-    ];
+                noto-fonts
+                noto-fonts-cjk
+                noto-fonts-emoji
+        ];
+
+        fontconfig = {
+            defaultFonts = {
+                serif =  [ "Inconsolata" "Noto" ];
+                sansSerif = [ "Inconsolata"  ];
+                monospace = [ "Inconsolata" ];
+            };
+        };
+    };
 
     # `man configuration.nix` or https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
     system.stateVersion = "24.05"; # Did you read the comment?
