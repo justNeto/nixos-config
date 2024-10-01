@@ -78,6 +78,7 @@
         zathura
         zoom
         zoxide
+        inputs.zen-browser.packages.${pkgs.system}.default
         zip
         qmk
         libreoffice
