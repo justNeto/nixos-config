@@ -45,6 +45,7 @@
         lsd
         mako
         mpvpaper
+        morgen
         nwg-displays
         obs-studio
         obsidian
