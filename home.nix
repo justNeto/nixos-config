@@ -280,7 +280,7 @@
                 autoload edit-command-line; zle -N edit-command-line
                 bindkey '^e' edit-command-line
                 #bindkey '^t' clear-screen
-                bindkey -r '^l'
+                #bindkey -r '^l'
 
                 bindkey '^?' backward-delete-char # backspace key sequence
                 bindkey "^[[P" delete-char # delete key sequence
