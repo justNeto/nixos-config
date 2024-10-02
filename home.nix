@@ -49,6 +49,7 @@
         nwg-displays
         obs-studio
         obsidian
+        openscad-unstable
         python3
         pipe-viewer
         pulsemixer
