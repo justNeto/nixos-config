@@ -85,7 +85,7 @@
 
         systemPackages = with pkgs; [
             git
-                neovim
+                inputs.unstable.legacyPackages.${pkgs.system}.neovim
                 wget
                 curl
                 tmux
