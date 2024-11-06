@@ -95,6 +95,18 @@
                 gnumake
                 cmake
                 openssl
+                linuxHeaders
+                nvidia-vaapi-driver
+                libva-utils
+                libvdpau
+                libvdpau-va-gl
+                zenith-nvidia
+                vulkan-headers
+                vulkan-loader
+                vulkan-tools
+                vulkan-tools-lunarg
+                vulkan-validation-layers
+                mesa
                 inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
         ];
 

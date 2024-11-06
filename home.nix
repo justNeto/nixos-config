@@ -36,6 +36,7 @@
         fd
         fastfetch
         gamescope
+        gamemode
         gimp
         grimblast
         hyprpicker
@@ -44,6 +45,7 @@
         lf
         lsd
         mako
+        mangohud
         mpvpaper
         morgen
         nwg-displays
