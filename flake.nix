@@ -15,6 +15,8 @@
             url 			= "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
             inputs.nixpkgs.follows 	= "nixpkgs";
         };
+
+        xremap-flake.url = "github:xremap/nix-flake";
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -28,6 +30,29 @@
                 modules = [
                         ./configuration.nix
                         ./hyprland.nix
+                        inputs.xremap-flake.nixosModules.default
+                        {
+                            # Modmap for single key rebinds
+                            services.xremap.config.modmap = [
+                                {
+                                    name = "Global";
+                                    remap = {
+                                            "CapsLock" = {
+                                                "held" = "SUPER_L";
+                                                "alone" = "ESC";
+                                            };
+                                    };
+                                }
+                            ];
+
+                            # Keymap for key combo rebinds
+                            # services.xremap.config.keymap = [
+                            # {
+                            #     name = "Example ctrl-u > pageup rebind";
+                            #     remap = { "C-u" = "PAGEUP"; };
+                            # }
+                            # ];
+                        }
                         home-manager.nixosModules.home-manager
                         {
                             home-manager.extraSpecialArgs 		= { inherit inputs; };
