@@ -3,7 +3,7 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
-        unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+        neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
 
         home-manager = {
@@ -19,22 +19,24 @@
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
         let
-        system 	= "x86_64-linux";
-    in {
-        nixosConfigurations.justNeto-nixos = nixpkgs.lib.nixosSystem {
-            specialArgs = { inherit inputs; };
-            modules = [
-                    ./configuration.nix
-                    ./hyprland.nix
-                    home-manager.nixosModules.home-manager
-                    {
-                        home-manager.extraSpecialArgs 		= { inherit inputs; };
-                        home-manager.backupFileExtension 	= "backup";
-                        home-manager.useGlobalPkgs		= true;
-                        home-manager.useUserPackages		= true;
-                        home-manager.users.neto			= import ./home.nix;
-                    }
-            ];
-        };
+            system 	= "x86_64-linux";
+        in
+        {
+            nixosConfigurations.justNeto-nixos = nixpkgs.lib.nixosSystem
+            {
+                specialArgs = { inherit inputs; };
+                modules = [
+                        ./configuration.nix
+                        ./hyprland.nix
+                        home-manager.nixosModules.home-manager
+                        {
+                            home-manager.extraSpecialArgs 		= { inherit inputs; };
+                            home-manager.backupFileExtension 	= "backup";
+                            home-manager.useGlobalPkgs		= true;
+                            home-manager.useUserPackages		= true;
+                            home-manager.users.neto			= import ./home.nix;
+                        }
+                ];
+            };
     };
 }

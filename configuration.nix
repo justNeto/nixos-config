@@ -85,7 +85,7 @@
 
         systemPackages = with pkgs; [
             git
-                inputs.unstable.legacyPackages.${pkgs.system}.neovim
+                inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
                 wget
                 curl
                 tmux
