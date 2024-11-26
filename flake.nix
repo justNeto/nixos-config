@@ -3,6 +3,8 @@
 
     inputs = {
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
         rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
 
@@ -16,7 +18,10 @@
             inputs.nixpkgs.follows 	= "nixpkgs";
         };
 
-        xremap-flake.url = "github:xremap/nix-flake";
+        ags = {
+            url = "github:Aylur/ags";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+        };
     };
 
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -30,36 +35,12 @@
                 modules = [
                         ./configuration.nix
                         ./hyprland.nix
-                        inputs.xremap-flake.nixosModules.default
-                        {
-                            # Modmap for single key rebinds
-                            services.xremap.config.modmap = [
-                                {
-                                    name = "Global";
-                                    remap = {
-                                            "CapsLock" = {
-                                                "held" = "SUPER_L";
-                                                "alone" = "ESC";
-                                            };
-                                    };
-                                }
-                            ];
-
-                            # Keymap for key combo rebinds
-                            # services.xremap.config.keymap = [
-                            # {
-                            #     name = "Example ctrl-u > pageup rebind";
-                            #     remap = { "C-u" = "PAGEUP"; };
-                            # }
-                            # ];
-                        }
                         home-manager.nixosModules.home-manager
                         {
                             home-manager.extraSpecialArgs 		= { inherit inputs; };
-                            home-manager.backupFileExtension 	= "backup";
-                            home-manager.useGlobalPkgs		= true;
+                            home-manager.useGlobalPkgs		    = true;
                             home-manager.useUserPackages		= true;
-                            home-manager.users.neto			= import ./home.nix;
+                            home-manager.users.neto			    = import ./home.nix;
                         }
                 ];
             };

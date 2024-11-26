@@ -1,5 +1,7 @@
 { config, pkgs, inputs, ... }:
 {
+    imports = [ inputs.ags.homeManagerModules.default ];
+
     home.username      = "neto";
     home.homeDirectory = "/home/neto";
 
@@ -322,8 +324,13 @@
                 LC_TYPE             = "en_US.UTF-8";
             };
         };
+
+        ags = {
+            enable = true;
+            configDir = null;
+        };
     };
 
-    home.stateVersion            = "24.05";
+    home.stateVersion = "24.05";
     programs.home-manager.enable = true;
 }
