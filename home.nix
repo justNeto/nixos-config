@@ -87,6 +87,10 @@
         zip
         qmk
         libreoffice
+
+        # Install AGS related stuff
+        inputs.ags.packages.${pkgs.system}.io
+        inputs.ags.packages.${pkgs.system}.notifd
     ];
 
     programs = {
