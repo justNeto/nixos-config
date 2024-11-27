@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, unstable, ... }:
 {
     imports = [ inputs.ags.homeManagerModules.default ];
 
@@ -17,76 +17,77 @@
         "$HOME/.local/bin/wallpaper"
     ];
 
-    home.packages = with pkgs; [
-        ani-cli
-        android-tools
-        android-studio
-        android-studio-tools
-        bat
-        beauty-line-icon-theme
-        btop
-        blueman
-        ctpv
-        cinnamon.nemo
-        calc
-        evtest
-        freecad
-        fzf
-        file
-        firefox
-        flutter
-        fd
-        fastfetch
-        gamescope
-        gamemode
-        gimp
-        grimblast
-        hyprpicker
-        imv
-        kitty
-        lf
-        lsd
-        mako
-        mangohud
-        mpvpaper
-        morgen
-        nwg-displays
-        obs-studio
-        obsidian
-        openscad-unstable
-        python3
-        pipe-viewer
-        pulsemixer
-        prusa-slicer
-        pv
-        pywal
-        pico-sdk
-        qbittorrent
-        ripgrep
-        ripdrag
-        slack
-        speedtest-cli
-        stow
-        steam
-        swww
-        scrcpy
-        tor-browser
-        telegram-desktop
-        tree
-        vesktop
-        unzip
-        waybar
-        wl-clipboard
-        wofi
-        wally-cli
-        yt-dlp
-        cargo
-        zathura
-        zoom
-        zoxide
-        zip
-        qmk
-        libreoffice
+
+    home.packages = [
+        pkgs.ani-cli
+        pkgs.android-tools
+        pkgs.android-studio
+        pkgs.android-studio-tools
+        pkgs.bat
+        pkgs.beauty-line-icon-theme
+        pkgs.btop
+        pkgs.blueman
+        pkgs.ctpv
+        pkgs.cinnamon.nemo
+        pkgs.calc
+        pkgs.evtest
+        pkgs.fzf
+        pkgs.file
+        pkgs.firefox
+        pkgs.flutter
+        pkgs.fd
+        pkgs.fastfetch
+        pkgs.gamescope
+        pkgs.gamemode
+        pkgs.gimp
+        pkgs.grimblast
+        pkgs.hyprpicker
+        pkgs.imv
+        pkgs.kitty
+        pkgs.lf
+        pkgs.lsd
+        pkgs.mako
+        pkgs.mangohud
+        pkgs.mpvpaper
+        pkgs.morgen
+        pkgs.nwg-displays
+        pkgs.obs-studio
+        pkgs.obsidian
+        pkgs.openscad-unstable
+        pkgs.python3
+        pkgs.pipe-viewer
+        pkgs.pulsemixer
+        pkgs.prusa-slicer
+        pkgs.pv
+        pkgs.pywal
+        pkgs.pico-sdk
+        pkgs.qbittorrent
+        pkgs.ripgrep
+        pkgs.ripdrag
+        pkgs.slack
+        pkgs.speedtest-cli
+        pkgs.stow
+        pkgs.steam
+        pkgs.swww
+        pkgs.scrcpy
+        pkgs.tor-browser
+        pkgs.telegram-desktop
+        pkgs.tree
+        pkgs.vesktop
+        pkgs.unzip
+        pkgs.waybar
+        pkgs.wl-clipboard
+        pkgs.wofi
+        pkgs.wally-cli
+        pkgs.yt-dlp
+        pkgs.cargo
+        pkgs.zathura
+        pkgs.zoom
+        pkgs.zoxide
+        pkgs.zip
+        pkgs.qmk
+        pkgs.libreoffice
+        unstable.freecad-wayland
 
         # Install AGS related stuff
         inputs.ags.packages.${pkgs.system}.io
@@ -94,6 +95,11 @@
     ];
 
     programs = {
+
+        ags = {
+            enable = true;
+            configDir = null;
+        };
 
         firefox = {
             enable		= true;
@@ -329,10 +335,6 @@
             };
         };
 
-        ags = {
-            enable = true;
-            configDir = null;
-        };
     };
 
     home.stateVersion = "24.05";
