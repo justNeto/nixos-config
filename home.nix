@@ -87,7 +87,7 @@
         pkgs.zip
         pkgs.qmk
         pkgs.libreoffice
-        unstable.freecad-wayland
+        unstable.freecad
 
         # Install AGS related stuff
         inputs.ags.packages.${pkgs.system}.io
