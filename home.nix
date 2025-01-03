@@ -316,14 +316,15 @@
                 LOCAL_CONFIG_DIR    = "$HOME/.local";
                 LOCAL_BIN_DIR       = "$LOCAL_CONFIG_DIR/bin";
 
-                XDG_SCREENSHOTS_DIR = "$HOME/.screenshots";
-                XDG_DATA_HOME       = "$HOME/.local/share";
+                XDG_DESKTOP_DIR     = "$HOME/desktop";
                 XDG_DOCUMENTS_DIR   = "$HOME/projects";
                 XDG_DOWNLOAD_DIR    = "$HOME/downloads";
-                XDG_CONFIG_DIR      = "$HOME/.config";
                 XDG_PICTURES_DIR    = "$HOME/imgs";
-                XDG_CACHE_DIR       = "$HOME/.cache";
                 XDG_VIDEOS_DIR      = "$HOME/vids";
+                XDG_CONFIG_DIR      = "$HOME/.config";
+                XDG_CACHE_DIR       = "$HOME/.cache";
+                XDG_SCREENSHOTS_DIR = "$HOME/.screenshots";
+                XDG_DATA_HOME       = "$HOME/.local/share";
 
                 NSFW_WALLPAPERS     = "$HOME/.local/wallpapers/NSFW_WALLPAPERS";
                 SFW_WALLPAPERS      = "$HOME/.local/wallpapers/SFW_WALLPAPERS";
