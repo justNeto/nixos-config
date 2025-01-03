@@ -37,6 +37,7 @@
         pkgs.flutter
         pkgs.fd
         pkgs.fastfetch
+        pkgs.odin
         pkgs.gamescope
         pkgs.gamemode
         pkgs.gimp
