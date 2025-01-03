@@ -51,8 +51,8 @@
         pkgs.mangohud
         pkgs.mpvpaper
         pkgs.morgen
-        pkgs.nwg-displays
         pkgs.obs-studio
+        pkgs.nwg-displays
         pkgs.obsidian
         pkgs.openscad-unstable
         pkgs.python3
