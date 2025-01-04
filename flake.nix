@@ -27,7 +27,6 @@
     outputs = { self, nixpkgs, home-manager, ... }@inputs:
         let
             system 	= "x86_64-linux";
-            unstable = import inputs.nixpkgs-unstable {inherit system;};
         in
         {
             nixosConfigurations.justNeto-nixos = nixpkgs.lib.nixosSystem
@@ -38,7 +37,7 @@
                         ./hyprland.nix
                         home-manager.nixosModules.home-manager
                         {
-                            home-manager.extraSpecialArgs 		= { inherit inputs; inherit unstable; };
+                            home-manager.extraSpecialArgs 		= { inherit inputs; };
                             home-manager.useGlobalPkgs		    = true;
                             home-manager.useUserPackages		= true;
                             home-manager.users.neto			    = import ./home.nix;

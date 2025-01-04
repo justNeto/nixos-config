@@ -1,6 +1,11 @@
-{ config, pkgs, inputs, unstable, ... }:
+{ config, inputs,  pkgs, pkgsUnstable, ... }:
 {
     imports = [ inputs.ags.homeManagerModules.default ];
+
+    _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
+        inherit (pkgs.stdenv.hostPlatform) system;
+        inherit (config.nixpkgs) config;
+    };
 
     home.username      = "neto";
     home.homeDirectory = "/home/neto";
@@ -19,6 +24,7 @@
 
 
     home.packages = [
+        # Stable packages
         pkgs.ani-cli
         pkgs.android-tools
         pkgs.android-studio
@@ -88,7 +94,10 @@
         pkgs.zip
         pkgs.qmk
         pkgs.libreoffice
-        unstable.freecad
+
+        # Unstable packages
+        pkgsUnstable.ghostty
+        pkgsUnstable.freecad
 
         # Install AGS related stuff
         inputs.ags.packages.${pkgs.system}.io
