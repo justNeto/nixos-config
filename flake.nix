@@ -22,11 +22,16 @@
             url = "github:Aylur/ags";
             inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
+
+        ghostty = {
+            url = "github:ghostty-org/ghostty";
+        };
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, ghostty, home-manager, ... }@inputs:
         let
             system 	= "x86_64-linux";
+            unstable = import inputs.nixpkgs-unstable {inherit system; };
         in
         {
             nixosConfigurations.justNeto-nixos = nixpkgs.lib.nixosSystem
@@ -35,9 +40,14 @@
                 modules = [
                         ./configuration.nix
                         ./hyprland.nix
+                        {
+                            environment.systemPackages = [
+                                ghostty.packages.x86_64-linux.default
+                            ];
+                        }
                         home-manager.nixosModules.home-manager
                         {
-                            home-manager.extraSpecialArgs 		= { inherit inputs; };
+                            home-manager.extraSpecialArgs 		= { inherit inputs; inherit unstable; };
                             home-manager.useGlobalPkgs		    = true;
                             home-manager.useUserPackages		= true;
                             home-manager.users.neto			    = import ./home.nix;

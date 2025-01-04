@@ -1,11 +1,6 @@
-{ config, inputs,  pkgs, pkgsUnstable, ... }:
+{ config, inputs, pkgs, unstable, ... }:
 {
     imports = [ inputs.ags.homeManagerModules.default ];
-
-    _module.args.pkgsUnstable = import inputs.nixpkgs-unstable {
-        inherit (pkgs.stdenv.hostPlatform) system;
-        inherit (config.nixpkgs) config;
-    };
 
     home.username      = "neto";
     home.homeDirectory = "/home/neto";
@@ -56,6 +51,7 @@
         pkgs.mako
         pkgs.mangohud
         pkgs.mpvpaper
+        pkgs.mpv
         pkgs.morgen
         pkgs.obs-studio
         pkgs.nwg-displays
@@ -96,8 +92,7 @@
         pkgs.libreoffice
 
         # Unstable packages
-        pkgsUnstable.ghostty
-        pkgsUnstable.freecad
+        unstable.freecad
 
         # Install AGS related stuff
         inputs.ags.packages.${pkgs.system}.io
