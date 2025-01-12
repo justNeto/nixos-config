@@ -83,6 +83,7 @@
         pkgs.wofi
         pkgs.wally-cli
         pkgs.yt-dlp
+        pkgs.yazi
         pkgs.cargo
         pkgs.zathura
         pkgs.zoom
@@ -101,10 +102,10 @@
 
     programs = {
 
-        ags = {
-            enable = true;
-            configDir = null;
-        };
+        # ags = {
+        #     enable = disable;
+        #     configDir = null;
+        # };
 
         firefox = {
             enable		= true;
@@ -340,7 +341,6 @@
                 LC_TYPE             = "en_US.UTF-8";
             };
         };
-
     };
 
     home.stateVersion = "24.05";
