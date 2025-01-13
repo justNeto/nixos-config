@@ -313,6 +313,7 @@
                 bindkey "^[[P" delete-char # delete key sequence
 
                 bindkey -s '^p' 'youtube-playlists\n' # select a playlist to listen to
+                bindkey -s '^f' 'fmrun\n' # run fmrun
             '';
 
             sessionVariables = {
