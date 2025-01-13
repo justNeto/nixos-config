@@ -304,11 +304,21 @@
                 bindkey '^?' backward-delete-char # backspace key sequence
                 bindkey "^[[P" delete-char # delete key sequence
 
-                bindkey -s '^f' 'lfrun\n'
-                bindkey -s '^s' 'lfrun $(fzf)\n'
                 bindkey -s '^p' 'youtube-playlists\n' # select a playlist to listen to
-                bindkey -s '^o' 'lfcd\n' # go to last dir
-            '';
+
+                function y() {
+                    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+                        yazi "$@" --cwd-file="$tmp"
+                        if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+                            builtin cd -- "$cwd"
+                        fi
+                        rm -f -- "$tmp"
+                }
+
+                bindkey -s '^f' 'y\n'
+}
+
+'';
 
             sessionVariables = {
 
