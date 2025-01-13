@@ -316,9 +316,7 @@
                 }
 
                 bindkey -s '^f' 'y\n'
-}
-
-'';
+            '';
 
             sessionVariables = {
 
