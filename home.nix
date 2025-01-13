@@ -17,7 +17,6 @@
         "$HOME/.local/bin/wallpaper"
     ];
 
-
     home.packages = [
         # Stable packages
         pkgs.ani-cli
@@ -270,6 +269,15 @@
             initExtra = ''
                 (cat ~/.cache/wal/sequences &)
 
+                function y() {
+                    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+                        yazi "$@" --cwd-file="$tmp"
+                        if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+                            builtin cd -- "$cwd"
+                                fi
+                                rm -f -- "$tmp"
+                }
+
                 setopt interactive_comments
                 stty stop undef
 
@@ -305,17 +313,6 @@
                 bindkey "^[[P" delete-char # delete key sequence
 
                 bindkey -s '^p' 'youtube-playlists\n' # select a playlist to listen to
-
-                function y() {
-                    local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-                        yazi "$@" --cwd-file="$tmp"
-                        if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-                            builtin cd -- "$cwd"
-                        fi
-                        rm -f -- "$tmp"
-                }
-
-                bindkey -s '^f' 'y\n'
             '';
 
             sessionVariables = {
