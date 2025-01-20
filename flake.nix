@@ -2,7 +2,6 @@
     description = "My first NixOS system flake!";
 
     inputs = {
-        xremap-flake.url = "github:xremap/nix-flake";
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
         rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
@@ -43,20 +42,6 @@
                         {
                             environment.systemPackages = [
                                 ghostty.packages.x86_64-linux.default
-                            ];
-                        }
-                        inputs.xremap-flake.nixosModules.default
-                        {
-                            services.xremap.config.modmap = [
-                                {
-                                    name = "Global";
-                                    remap = {
-                                        "CapsLock" = {
-                                            held = "SUPER_L";
-                                            alone = "ESC";
-                                        };
-                                    };
-                                }
                             ];
                         }
                         home-manager.nixosModules.home-manager
