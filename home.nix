@@ -24,12 +24,14 @@
         pkgs.android-studio
         pkgs.android-studio-tools
         pkgs.bat
+        pkgs.brave
         pkgs.beauty-line-icon-theme
         pkgs.btop
         pkgs.blueman
         pkgs.ctpv
         pkgs.cinnamon.nemo
         pkgs.calc
+        pkgs.dogdns
         pkgs.evtest
         pkgs.fzf
         pkgs.file

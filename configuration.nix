@@ -85,7 +85,6 @@
 
         systemPackages = with pkgs; [
             git
-                inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
                 wget
                 curl
                 tmux
@@ -108,6 +107,7 @@
                 vulkan-validation-layers
                 mesa
                 inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+                inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         ];
 
         variables.EDITOR = "neovim";
