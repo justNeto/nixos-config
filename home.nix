@@ -28,8 +28,6 @@
         pkgs.beauty-line-icon-theme
         pkgs.btop
         pkgs.blueman
-        pkgs.ctpv
-        pkgs.cinnamon.nemo
         pkgs.calc
         pkgs.dogdns
         pkgs.evtest
@@ -46,8 +44,6 @@
         pkgs.grimblast
         pkgs.hyprpicker
         pkgs.imv
-        pkgs.kitty
-        pkgs.lf
         pkgs.lsd
         pkgs.mako
         pkgs.mangohud
