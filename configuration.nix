@@ -89,23 +89,23 @@
                 curl
                 tmux
                 gcc
-                libnotify
-                nerdfonts
-                gnumake
+                mesa
                 cmake
+                gnumake
                 openssl
-                linuxHeaders
-                nvidia-vaapi-driver
-                libva-utils
                 libvdpau
-                libvdpau-va-gl
-                zenith-nvidia
-                vulkan-headers
-                vulkan-loader
+                nerdfonts
+                libnotify
+                libva-utils
                 vulkan-tools
+                linuxHeaders
+                zenith-nvidia
+                vulkan-loader
+                vulkan-headers
+                libvdpau-va-gl
+                nvidia-vaapi-driver
                 vulkan-tools-lunarg
                 vulkan-validation-layers
-                mesa
                 inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
                 inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         ];
@@ -113,7 +113,7 @@
         variables.EDITOR = "neovim";
 
         sessionVariables = {
-            TERMINAL		= "kitty";
+            TERMINAL		= "xterm-ghostty";
             NIXOS_OZONE_WL	= "1";
         };
 

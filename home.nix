@@ -30,6 +30,7 @@
         pkgs.blueman
         pkgs.calc
         pkgs.dogdns
+        unstable.deskflow
         pkgs.evtest
         pkgs.fzf
         pkgs.file
@@ -45,6 +46,7 @@
         pkgs.hyprpicker
         pkgs.imv
         pkgs.lsd
+        pkgs.lazygit
         pkgs.mako
         pkgs.mangohud
         pkgs.mpvpaper
