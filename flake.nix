@@ -26,12 +26,12 @@
             url = "github:ghostty-org/ghostty";
         };
 
-        hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"
+        hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
 
         hy3 = {
             url = "github:outfoxxed/hy3";
             inputs.hyprland.follows = "hyprland";
-        }
+        };
     };
 
     outputs = { self, nixpkgs, ghostty, home-manager, hyprland, hy3, ... }@inputs:
