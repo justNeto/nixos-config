@@ -36,36 +36,29 @@
 
     outputs = { self, nixpkgs, ghostty, home-manager, hyprland, hy3, ... }@inputs:
         let
-            system 	= "x86_64-linux";
-            unstable = import inputs.nixpkgs-unstable {inherit system; };
-        in
+        system 	= "x86_64-linux";
+        unstable = import inputs.nixpkgs-unstable {inherit system; };
+    in
+    {
+        nixosConfigurations.justNeto-nixos = nixpkgs.lib.nixosSystem
         {
-            nixosConfigurations.justNeto-nixos = nixpkgs.lib.nixosSystem
-            {
-                specialArgs = { inherit inputs; };
-                modules = [
-                        ./configuration.nix
-                        ./low_level.nix
-                        {
-                            environment.systemPackages = [
-                                ghostty.packages.x86_64-linux.default
-                            ];
-                        }
-                        hyprland.homeManagerModules.default
-                        {
-                            wayland.windowManager.hyprland = {
-                                enable = true;
-                                plugins = [ hy3.packages.x86_64-linux.hy3 ];
-                            };
-                        }
-                        home-manager.nixosModules.home-manager
-                        {
-                            home-manager.extraSpecialArgs 		= { inherit inputs; inherit unstable; };
-                            home-manager.useGlobalPkgs		    = true;
-                            home-manager.useUserPackages		= true;
-                            home-manager.users.neto			    = import ./home.nix;
-                        }
-                ];
-            };
+            specialArgs = { inherit inputs; };
+            modules = [
+                ./configuration.nix
+                ./low_level.nix
+                {
+                    environment.systemPackages = [
+                        ghostty.packages.x86_64-linux.default
+                    ];
+                }
+                home-manager.nixosModules.home-manager
+                {
+                    home-manager.extraSpecialArgs 		= { inherit inputs; inherit unstable; };
+                    home-manager.useGlobalPkgs		    = true;
+                    home-manager.useUserPackages		= true;
+                    home-manager.users.neto			    = import ./home.nix;
+                }
+            ];
+        };
     };
 }
