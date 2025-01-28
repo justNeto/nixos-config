@@ -8,13 +8,13 @@
         neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
         home-manager = {
-            url			= "github:nix-community/home-manager/release-24.05";
-            inputs.nixpkgs.follows 	= "nixpkgs";
+            url	= "github:nix-community/home-manager/release-24.05";
+            inputs.nixpkgs.follows = "nixpkgs";
         };
 
         firefox-addons = {
-            url 			= "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-            inputs.nixpkgs.follows 	= "nixpkgs";
+            url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+            inputs.nixpkgs.follows = "nixpkgs";
         };
 
         ags = {
@@ -25,9 +25,16 @@
         ghostty = {
             url = "github:ghostty-org/ghostty";
         };
+
+        hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1"
+
+        hy3 = {
+            url = "github:outfoxxed/hy3";
+            inputs.hyprland.follows = "hyprland";
+        }
     };
 
-    outputs = { self, nixpkgs, ghostty, home-manager, ... }@inputs:
+    outputs = { self, nixpkgs, ghostty, home-manager, hyprland, hy3, ... }@inputs:
         let
             system 	= "x86_64-linux";
             unstable = import inputs.nixpkgs-unstable {inherit system; };
@@ -38,11 +45,18 @@
                 specialArgs = { inherit inputs; };
                 modules = [
                         ./configuration.nix
-                        ./hyprland.nix
+                        ./low_level.nix
                         {
                             environment.systemPackages = [
                                 ghostty.packages.x86_64-linux.default
                             ];
+                        }
+                        hyprland.homeManagerModules.default
+                        {
+                            wayland.windowManager.hyprland = {
+                                enable = true;
+                                plugins = [ hy3.packages.x86_64-linux.hy3 ];
+                            };
                         }
                         home-manager.nixosModules.home-manager
                         {
