@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
 { config, lib, pkgs, inputs, ... }:
 {
     imports =
@@ -36,6 +32,13 @@
     # Enable the X11 windowing system.
     # services.xserver.enable = true;
     programs.zsh.enable = true;
+
+    # Hyprland
+    programs.hyprland = {
+        enable = true;
+        package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+        portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    };
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
