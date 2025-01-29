@@ -45,6 +45,7 @@
         pkgs.grimblast
         pkgs.hyprpicker
         pkgs.imv
+        pkgs.kitty
         pkgs.lsd
         pkgs.lazygit
         pkgs.mako
