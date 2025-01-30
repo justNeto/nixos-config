@@ -38,6 +38,7 @@
         pkgs.flutter
         pkgs.fd
         pkgs.fastfetch
+        pkgs.ffmpeg
         pkgs.odin
         pkgs.gamescope
         pkgs.gamemode
@@ -78,6 +79,7 @@
         pkgs.tree
         pkgs.vesktop
         pkgs.unzip
+        pkgs.v4l-utils
         pkgs.waybar
         pkgs.wl-clipboard
         pkgs.wofi
