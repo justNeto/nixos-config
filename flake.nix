@@ -48,6 +48,8 @@
                     {
                         wayland.windowManager.hyprland = {
                             enable = true;
+                            package = inputs.hyprland.packages.${system}.hyprland;
+                            portalPackage = inputs.hyprland.packages.${system}.xdg-desktop-portal-hyprland;
                             plugins = [ inputs.hy3.${system}.hy3 ];
                         };
                     }
