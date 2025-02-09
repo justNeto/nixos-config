@@ -9,7 +9,7 @@
 
         home-manager = {
             url			= "github:nix-community/home-manager/release-24.05";
-            inputs.nixpkgs.follows 	= "nixpkgs";
+            inputs.nixpkgs.follows 	= "nixpkgs-unstable";
         };
 
         firefox-addons = {
@@ -25,15 +25,35 @@
         ghostty = {
             url = "github:ghostty-org/ghostty";
         };
+
+        hyprland.url = "github:hyprwm/Hyprland?submodules=1";
+
+        hy3 = {
+            url = "github:outfoxxed/hy3";
+            inputs.hyprland.follows = "hyprland";
+        };
     };
 
-    outputs = { self, nixpkgs, ghostty, home-manager, ... }@inputs:
+    outputs = { self, home-manager, ghostty, hyprland, ... }@inputs:
         let
             system 	= "x86_64-linux";
             unstable = import inputs.nixpkgs-unstable {inherit system; };
+            pkgs = inputs.nixpkgs;
         in
         {
-            nixosConfigurations.justNeto-nixos = nixpkgs.lib.nixosSystem
+            homeConfigurations."neto@justNeto-nixos" = home-manager.lib.homeManagerConfiguration {
+                modules = [
+                    hyprland.homeManagerModules.default
+
+                    {
+                        wayland.windowManager.hyprland = {
+                            enable = true;
+                            plugins = [ inputs.hy3.${system}.hy3 ];
+                        };
+                    }
+                ];
+            };
+            nixosConfigurations.justNeto-nixos = pkgs.lib.nixosSystem
             {
                 specialArgs = { inherit inputs; };
                 modules = [
@@ -53,5 +73,6 @@
                         }
                 ];
             };
+
     };
 }
