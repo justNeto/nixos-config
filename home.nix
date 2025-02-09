@@ -29,8 +29,8 @@
         pkgs.btop
         pkgs.blueman
         pkgs.calc
+        pkgs.cargo
         pkgs.dogdns
-        unstable.deskflow
         pkgs.evtest
         pkgs.fzf
         pkgs.file
@@ -46,6 +46,7 @@
         pkgs.grimblast
         pkgs.hyprpicker
         pkgs.imv
+        pkgs.jq
         pkgs.kitty
         pkgs.lsd
         pkgs.lazygit
@@ -66,6 +67,7 @@
         pkgs.pywal
         pkgs.pico-sdk
         pkgs.qbittorrent
+        pkgs.qmk
         pkgs.ripgrep
         pkgs.ripdrag
         pkgs.slack
@@ -83,19 +85,19 @@
         pkgs.waybar
         pkgs.wl-clipboard
         pkgs.wofi
+        pkgs.wev
         pkgs.wally-cli
         pkgs.yt-dlp
         pkgs.yazi
-        pkgs.cargo
         pkgs.zathura
         pkgs.zoom
         pkgs.zoxide
         pkgs.zip
-        pkgs.qmk
         pkgs.libreoffice
 
         # Unstable packages
         unstable.freecad
+        unstable.deskflow
 
         # Install AGS related stuff
         inputs.ags.packages.${pkgs.system}.io
