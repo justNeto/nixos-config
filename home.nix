@@ -45,6 +45,7 @@
         pkgs.gimp
         pkgs.grimblast
         pkgs.hyprpicker
+        pkgs.hyprwayland-scanner
         pkgs.imv
         pkgs.jq
         pkgs.kitty
