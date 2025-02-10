@@ -30,6 +30,7 @@
         pkgs.blueman
         pkgs.calc
         pkgs.cargo
+        pkgs.cpio
         pkgs.dogdns
         pkgs.evtest
         pkgs.fzf
@@ -51,6 +52,7 @@
         pkgs.kitty
         pkgs.lsd
         pkgs.lazygit
+        pkgs.llama-cpp
         pkgs.mako
         pkgs.mangohud
         pkgs.mpvpaper
@@ -58,7 +60,9 @@
         pkgs.morgen
         pkgs.obs-studio
         pkgs.nwg-displays
+        unstable.nodejs_23
         pkgs.obsidian
+        pkgs.ollama
         pkgs.openscad-unstable
         pkgs.python3
         pkgs.pipe-viewer
@@ -77,6 +81,7 @@
         pkgs.steam
         pkgs.swww
         pkgs.scrcpy
+        pkgs.tree-sitter
         pkgs.tor-browser
         pkgs.telegram-desktop
         pkgs.tree
