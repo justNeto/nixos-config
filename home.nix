@@ -62,7 +62,6 @@
         pkgs.nwg-displays
         unstable.nodejs_23
         pkgs.obsidian
-        pkgs.ollama
         pkgs.openscad-unstable
         pkgs.python3
         pkgs.pipe-viewer

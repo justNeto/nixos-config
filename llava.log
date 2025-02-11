@@ -1,5 +1,0 @@
-[1739164823] [/build/source/examples/llava/llava-cli.cpp:  287][                    main] Log start
-[1739164823] [/build/source/common/./log.h:  589][   log_dump_cmdline_impl] Cmd: llava-cli
-[1739164823] [/build/source/examples/llava/llava-cli.cpp:  116][    show_additional_info] 
- example usage: llava-cli -m <llava-v1.5-7b/ggml-model-q5_k.gguf> --mmproj <llava-v1.5-7b/mmproj-model-f16.gguf> --image <path/to/an/image.jpg> --image <path/to/another/image.jpg> [--temp 0.1] [-p "describe the image in detail."]
-[1739164823] [/build/source/examples/llava/llava-cli.cpp:  117][    show_additional_info]   note: a lower temperature value like 0.1 is recommended for better quality.
