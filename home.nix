@@ -45,11 +45,9 @@
         pkgs.gamemode
         pkgs.gimp
         pkgs.grimblast
-        pkgs.glfw
         pkgs.hyprpicker
         pkgs.hyprwayland-scanner
         pkgs.imv
-        pkgs.imhex
         pkgs.jq
         pkgs.kitty
         pkgs.lsd
