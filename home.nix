@@ -31,6 +31,7 @@
         pkgs.calc
         pkgs.cargo
         pkgs.cpio
+        pkgs.dolphin
         pkgs.dogdns
         pkgs.evtest
         pkgs.fzf

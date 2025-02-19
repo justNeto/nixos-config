@@ -85,29 +85,30 @@
 
         systemPackages = with pkgs; [
             git
-                wget
-                curl
-                tmux
-                gcc
-                mesa
-                cmake
-                gnumake
-                openssl
-                libvdpau
-                nerdfonts
-                libnotify
-                libva-utils
-                vulkan-tools
-                linuxHeaders
-                zenith-nvidia
-                vulkan-loader
-                vulkan-headers
-                libvdpau-va-gl
-                nvidia-vaapi-driver
-                vulkan-tools-lunarg
-                vulkan-validation-layers
-                inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-                inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
+            wget
+            curl
+            tmux
+            gcc
+            mesa
+            cmake
+            gnumake
+            openssl
+            libvdpau
+            nerdfonts
+            libnotify
+            libva-utils
+            vulkan-tools
+            linuxHeaders
+            zenith-nvidia
+            vulkan-loader
+            vulkan-headers
+            libvdpau-va-gl
+            (callPackage ./imhex.nix { })
+            nvidia-vaapi-driver
+            vulkan-tools-lunarg
+            vulkan-validation-layers
+            inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+            inputs.neovim-nightly-overlay.packages.${pkgs.system}.default
         ];
 
         variables.EDITOR = "neovim";
