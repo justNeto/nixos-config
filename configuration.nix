@@ -103,7 +103,6 @@
             vulkan-loader
             vulkan-headers
             libvdpau-va-gl
-            (callPackage ./imhex.nix { })
             nvidia-vaapi-driver
             vulkan-tools-lunarg
             vulkan-validation-layers
