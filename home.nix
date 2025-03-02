@@ -104,6 +104,7 @@
         # Unstable packages
         unstable.freecad
         unstable.deskflow
+        unstable.imhex
 
         # Install AGS related stuff
         inputs.ags.packages.${pkgs.system}.io
