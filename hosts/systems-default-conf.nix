@@ -63,6 +63,7 @@ in {
         openssh.enable = true;
 
         # Using localtimed for windows/linux dual booting compatibility
+        geoclue2.enable = true;
         localtimed.enable = true;
 
         # Automount drive
