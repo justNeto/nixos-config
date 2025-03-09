@@ -1,4 +1,4 @@
-{ pkgs, systemSettings, ... }:
+{ pkgs, systemSettings, config, ... }:
 {
     imports = [ ../../modules/core ];
     bluetooth.enable = true;

@@ -1,15 +1,15 @@
-{ inputs, pkgs, pkgs-unstable, systemSettings, lib, ... }:
+{ inputs, config, pkgs, pkgs-unstable, systemSettings, lib, ... }:
 let
-    user = ${systemSettings.username};
+    # user = ${systemSettings.username};
     # Libraries to use for general build processes (don't forget to add them to LD_LIBRARY_PATH)
-    # let myLibs = with pkgs; [ openssl.dev freetype.dev fontconfig.dev pkg-config ];
+    myLibs = with pkgs; [ openssl.dev freetype.dev fontconfig.dev pkg-config ];
 in {
 
     home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
         extraSpecialArgs = { inherit inputs; inherit systemSettings; inherit pkgs; inherit pkgs-unstable; };
-        users.${user} = (import ../modules/home);
+        users.${systemSettings.username} = (import ../modules/home);
     };
 
     nix = {
@@ -88,7 +88,7 @@ in {
     # Enable networking
     networking = {
         networkmanager.enable = true;
-    }
+    };
 
     # Set your time zone.
     time.timeZone = "${systemSettings.timezone}";
@@ -99,7 +99,7 @@ in {
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users = {
         defaultUserShell = pkgs.zsh;
-        users.${user} = {
+        users.${systemSettings.username} = {
             isNormalUser = true;
             description = "Ernesto L";
             extraGroups = [ "networkmanager" "wheel" "video" "input" ];

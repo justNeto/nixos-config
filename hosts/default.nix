@@ -12,7 +12,7 @@ in
       home-manager.nixosModules.home-manager
       ./systems-default-conf.nix
       ./justNeto-nixos/configuration.nix
-      ./neto-macos/configuration.nix
+      ./justNeto-nixos/hardware-configuration.nix
     ];
   };
 
