@@ -49,7 +49,7 @@
     # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
     networking = {
         useDHCP = lib.mkDefault true;
-        networking.hostName = "justNeto-nixos"; # Define your hostname.
+        hostName = "justNeto-nixos"; # Define your hostname.
 
         # networking.interfaces.enp6s0.useDHCP = lib.mkDefault true;
         # networking.interfaces.enp7s0.useDHCP = lib.mkDefault true;

@@ -70,7 +70,6 @@ in {
         gvfs.enable = true;
         udisks2.enable = true;
 
-        pulseaudio.enable = false;
         pipewire = {
             enable = true;
             pulse.enable = true;
@@ -82,7 +81,7 @@ in {
     # Enable resetting ZSA keyboards
     hardware.keyboard = {
         zsa.enable = true;
-        keyboard.qmk.enable = true;
+        qmk.enable = true;
     };
 
     # Enable networking
