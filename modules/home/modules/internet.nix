@@ -8,7 +8,7 @@
 
         home.packages = [
             pkgs.firefox
-            pkgs.qbittorrent
+            # pkgs.qbittorrent
             pkgs.speedtest-cli
             pkgs.tor-browser
         ];

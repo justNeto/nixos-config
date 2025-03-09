@@ -6,7 +6,7 @@
 
     config = lib.mkIf config.unstable.enable {
         home.packages = [
-            pkgs-unstable.deskflow
+            # pkgs-unstable.deskflow
             pkgs-unstable.freecad
             pkgs-unstable.imhex
         ];

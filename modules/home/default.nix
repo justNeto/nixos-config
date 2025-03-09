@@ -4,8 +4,6 @@
     home.homeDirectory = "/home/${systemSettings.username}";
     home.stateVersion = "24.05";
 
-    imports = [ ./modules ]; # importing all the modules to use
-
     home.packages = [
         pkgs.ani-cli
         pkgs.bat
@@ -35,7 +33,6 @@
     programs = {
         home-manager.enable = true; # enable home manager
 
-        ani-cli.enable = true;
         btop = {
             enable = true;
             settings = {
@@ -44,27 +41,10 @@
                 theme_background = true;
             };
         };
-        bat.enable = true;
-        dogdns.enable = true;
-        fastfetch.enable = true;
-        ffmpeg.enable = true;
-        fd.enable = true;
-        fzf.enable = true;
-        lazygit.enable = true;
-        lsd.enable = true;
-        mpv.enable = true;
-        morgen.enable = true;
-        nodejs_23.enable = true;
-        obs-studio.enable = true;
-        obsidian.enable = true;
-        pipe-viewer.enable = true;
-        python3.enable = true;
-        ripgrep.enable = true;
-        tree.enable = true;
+
         yt-dlp.enable = true;
         yazi.enable = true;
         zoxide.enable = true;
-
     };
 
     imports = [ ./modules ];
@@ -76,7 +56,7 @@
             createDirectories = false;
             desktop = "/home/${systemSettings.username}/desktop";
             documents = "/home/${systemSettings.username}/projects";
-            downloads = "/home/${systemSettings.username}/downloads";
+            download = "/home/${systemSettings.username}/downloads";
             pictures = "/home/${systemSettings.username}/imgs";
             templates = "/home/${systemSettings.username}/templates";
             videos = "/home/${systemSettings.username}/vids";

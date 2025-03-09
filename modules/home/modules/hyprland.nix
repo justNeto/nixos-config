@@ -15,7 +15,7 @@
             pkgs.hyprland-protocols
             pkgs.hyprwayland-scanner
             pkgs.imv
-            pkks.mako
+            pkgs.mako
             pkgs.nwg-displays
             pkgs.pywal
             pkgs.pulsemixer
@@ -26,30 +26,31 @@
             pkgs.wofi
             pkgs.wev
             pkgs.wdisplays
-            pgks.wlogout
+            pkgs.wlogout
             inputs.ags.packages.${pkgs.system}.io
             inputs.ags.packages.${pkgs.system}.notifd
         ];
 
-        home.sessionVariables.NIXOS_OZONE_WL = "1";
-        home.sessionVariables.MOZ_DBUS_REMOTE = "1";
-        home.sessionVariables.HYPRCURSOR_SIZE = "32";
-        home.sessionVariables.TERMINAL = "$TERMINAL";
-        home.sessionVariables.MOZ_ENABLE_WAYLAND = "1";
-        home.sessionVariables.ELM_ENGINE = "wayland_egl";
-        home.sessionVariables.GBM_BACKEND = "nvidia-drm";
-        home.sessionVariables.QT_QPA_PLATFORM = "wayland";
-        home.sessionVariables.XDG_SESSION_TYPE = "wayland";
-        home.sessionVariables.LIBVA_DRIVER_NAME = "nvidia";
-        home.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
-        home.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
-        home.sessionVariables._JAVA_AWT_WM_NONREPARENTING = "1";
-        home.sessionVariables.QT_WAYLAND_FORCE_DPI = "physical";
-        home.sessionVariables.ECORE_EVAS_ENGINE = "wayland_egl";
-        home.sessionVariables._GLX_VENDOR_LIBRARY_NAME = "nvidia";
-        home.sessionVariables.__VK_LAYER_NV_optimus = "NVIDIA_only";
-        home.sessionVariables.QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-        home.sessionVariables.HYPRCURSOR_THEME = "rose-pine-hyprcursor";
+        home.sessionVariables = {
+            NIXOS_OZONE_WL = "1";
+            MOZ_DBUS_REMOTE = "1";
+            HYPRCURSOR_SIZE = "32";
+            TERMINAL = "xterm-ghostty";
+            MOZ_ENABLE_WAYLAND = "1";
+            ELM_ENGINE = "wayland_egl";
+            GBM_BACKEND = "nvidia-drm";
+            QT_QPA_PLATFORM = "wayland";
+            XDG_SESSION_TYPE = "wayland";
+            LIBVA_DRIVER_NAME = "nvidia";
+            WLR_NO_HARDWARE_CURSORS = "1";
+            _JAVA_AWT_WM_NONREPARENTING = "1";
+            QT_WAYLAND_FORCE_DPI = "physical";
+            ECORE_EVAS_ENGINE = "wayland_egl";
+            _GLX_VENDOR_LIBRARY_NAME = "nvidia";
+            __VK_LAYER_NV_optimus = "NVIDIA_only";
+            QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+            HYPRCURSOR_THEME = "rose-pine-hyprcursor";
+        };
 
         services = {
             hypridle = {
@@ -85,10 +86,5 @@
                 # package = inputs.hyprland.packages.${pkgs.system}.hypridle;
             };
         };
-
-        programs.hyprland = {
-            enable 		= true;
-            xwayland.enable 	= true;
-        };
-    }
+    };
 }

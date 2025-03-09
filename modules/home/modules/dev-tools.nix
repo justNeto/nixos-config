@@ -15,15 +15,5 @@
             pkgs.scrcpy
             pkgs.stow
         ];
-
-        programs = {
-            cargo.enable = true;
-            cpio.enable = true;
-            evtest.enable = true;
-            pico-sdk.enable = true;
-            qmk.enable = true;
-            scrcpy.enable = true;
-            stow.enable = true;
-        };
     };
 }

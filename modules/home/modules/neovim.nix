@@ -6,7 +6,11 @@
         programs = {
             neovim = {
                 enable = true;
-                package = pkgs.neovim;
+                viAlias = true;
+                vimAlias = true;
+                vimdiffAlias = true;
+                defaultEditor	= true;
+                package = inputs.neovim-nightly.packages.${pkgs.system}.default;
             };
         };
 

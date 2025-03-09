@@ -116,7 +116,7 @@ in {
             # PKG_CONFIG_PATH = lib.makeSearchPath "lib/pkgconfig" myLibs;
         };
 
-        pathsToLink = [ "/share/nautilus-python/extensions" ];
+        # pathsToLink = [ "/share/nautilus-python/extensions" ];
     };
 
     xdg.portal = {

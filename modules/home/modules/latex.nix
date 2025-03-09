@@ -8,15 +8,7 @@
 
         home.packages = [
             pkgs.pandoc
-                pkgs.texliveFull
-                pkgs.biber
-                pkgs.lyx
-                pkgs.pdflatex
-                pkgs.xelatex
+            pkgs.texliveFull
         ];
-
-        programs.texlive = {
-            enable = true;
-        };
     };
 }

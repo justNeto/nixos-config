@@ -55,7 +55,7 @@
         };
     in
     {
-        nixosConfigurations = (import ./hosts/default.nix {
+        nixosConfigurations = (import ./hosts {
             inherit (nixpkgs) lib;
             inherit inputs nixpkgs pkgs pkgs-unstable systemSettings home-manager;
         });
