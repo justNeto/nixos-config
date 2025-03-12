@@ -9,6 +9,7 @@
         home.packages = [
             pkgs.openscad-unstable
             pkgs.prusa-slicer
+            pkgs.blender
         ];
     };
 }

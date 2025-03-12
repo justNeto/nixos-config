@@ -86,6 +86,11 @@
             name = "BeautyLine";
             package = pkgs.beauty-line-icon-theme;
         };
+
+        font = {
+            name = "Inconsolata Nerd Font";
+            size = 14;
+        };
     };
 
     home.sessionVariables = { GTK_THEME = "Sweet-Dark"; };

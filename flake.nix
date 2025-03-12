@@ -46,12 +46,10 @@
         pkgs = import nixpkgs {
             system = systemSettings.system;
             config = { allowUnfree = true; };
-            # overlays = [ inputs.neovim-nightly.overlays.default ];
         };
         pkgs-unstable = import nixpkgs-unstable {
             system = systemSettings.system;
             config = { allowUnfree = true; };
-            # overlays = [ inputs.neovim-nightly.overlays.default ];
         };
     in
     {
