@@ -7,8 +7,6 @@
     config = lib.mkIf config.internet.enable {
 
         home.packages = [
-            pkgs.firefox
-            # pkgs.qbittorrent
             pkgs.speedtest-cli
             pkgs.tor-browser
         ];

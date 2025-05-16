@@ -2,6 +2,7 @@
 { inputs, pkgs, pkgs-unstable, systemSettings, home-manager, ... }:
 let
   lib = inputs.nixpkgs.lib;
+  darwin = inputs.darwin.lib;
   system = systemSettings.system;
 in
 {
@@ -16,15 +17,13 @@ in
     ];
   };
 
-  # other-hostname = lib.nixosSystem {
-  #   inherit system;
-  #   specialArgs = { inherit inputs pkgs systemSettings; };
-  #   modules = [
-  #     nixos-hardware.nixosModules.lenovo-thinkpad-x1-9th-gen
-  #     home-manager.nixosModules.home-manager
-  #     ./configuration.nix
-  #     ./x1c/hardware-configuration.nix
-  #     ./x1c/configuration.nix
-  #   ];
-  # };
+  neto-work = darwin.nixosSystem {
+    inherit system;
+    specialArgs = { inherit inputs pkgs systemSettings; };
+    modules = [
+      home-manager.nixosModules.home-manager
+      ./macos-nix/configuration.nix
+      ./macos-nix/hardware-configuration.nix
+    ];
+  };
 }

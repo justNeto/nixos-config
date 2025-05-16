@@ -1,17 +1,5 @@
-{ inputs, config, pkgs, pkgs-unstable, systemSettings, lib, ... }:
-let
-    # user = ${systemSettings.username};
-    # Libraries to use for general build processes (don't forget to add them to LD_LIBRARY_PATH)
-    myLibs = with pkgs; [ openssl.dev freetype.dev fontconfig.dev pkg-config ];
-in {
-
-    home-manager = {
-        useGlobalPkgs = true;
-        useUserPackages = true;
-        extraSpecialArgs = { inherit inputs; inherit systemSettings; inherit pkgs; inherit pkgs-unstable; };
-        users.${systemSettings.username} = (import ../modules/home);
-    };
-
+{ inputs, pkgs, pkgs-unstable, systemSettings, ... }:
+{
     nix = {
         settings = {
             experimental-features = [ "nix-command" "flakes" ];
@@ -42,7 +30,7 @@ in {
         packages = with pkgs; [
             (nerdfonts.override { fonts = [ "Inconsolata" ]; })
                 noto-fonts
-                noto-fonts-cjk
+                noto-fonts-cjk-sans
                 noto-fonts-emoji
         ];
 
@@ -79,35 +67,13 @@ in {
         };
     };
 
-    # Enable resetting ZSA keyboards
-    hardware.keyboard = {
-        zsa.enable = true;
-        qmk.enable = true;
-    };
-
     # Enable networking
     networking = {
         networkmanager.enable = true;
     };
 
-    # Set your time zone.
-    time.timeZone = "${systemSettings.timezone}";
-
     # Select internationalisation properties.
     i18n.defaultLocale = "${systemSettings.locale}";
-
-    # Define a user account. Don't forget to set a password with ‘passwd’.
-    users = {
-        defaultUserShell = pkgs.zsh;
-        users.${systemSettings.username} = {
-            isNormalUser = true;
-            description = "Ernesto L";
-            extraGroups = [ "networkmanager" "wheel" "video" "input" ];
-        };
-    };
-
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
 
     environment = {
         sessionVariables = {
@@ -117,30 +83,38 @@ in {
             # PKG_CONFIG_PATH = lib.makeSearchPath "lib/pkgconfig" myLibs;
         };
 
-        # pathsToLink = [ "/share/nautilus-python/extensions" ];
-    };
+        systemPackages = with pkgs; [
+            # Packages that I always want in my system
+            git
+            gcc
+            wget
+            tmux
+            curl
+            cmake
+            gnumake
+            openssl
+            nerdfonts
+            libva-utils
+            vulkan-tools
+            linuxHeaders
+            zenith-nvidia
+            vulkan-loader
+            vulkan-headers
+            vulkan-tools-lunarg
+            vulkan-validation-layers
+            mesa
 
-    xdg.portal = {
-        enable = true;
-        extraPortals = [
-            inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland
-            pkgs.xdg-desktop-portal-gtk
+            # TODO: move ghostty + rose-pine to module files
+            inputs.ghostty.packages.${pkgs.system}.default
+            inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+
+            # Some graphic oriented system graphics. TODO: move them to extra packages
+            libnotify
+            libvdpau
+            libvdpau-va-gl
+            nvidia-vaapi-driver
         ];
-        # configPackages = [ inputs.hyprland.packages.${pkgs.system}.hyprland ];
-        xdgOpenUsePortal = true;
     };
 
-    programs = {
-        ssh.startAgent = true;
-        zsh.enable = true;
-
-        hyprland = {
-            enable = true;
-            xwayland.enable = true;
-            package = inputs.hyprland.packages.${pkgs.system}.hyprland;
-            portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-        };
-    };
-
-    system.stateVersion = "24.05"; #
+    system.stateVersion = "24.11"; #
 }
