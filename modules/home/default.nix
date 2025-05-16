@@ -2,7 +2,7 @@
 {
     home.username = "${systemSettings.username}";
     home.homeDirectory = "/home/${systemSettings.username}";
-    home.stateVersion = "24.05";
+    home.stateVersion = "24.11";
 
     home.packages = [
         pkgs.ani-cli
@@ -16,8 +16,7 @@
         pkgs.lazygit
         pkgs.lsd
         pkgs.mpv
-        pkgs.morgen
-        pkgs-unstable.nodejs_23
+        pkgs-unstable.nodejs_24
         pkgs.obs-studio
         pkgs.obsidian
         pkgs.pipe-viewer

@@ -42,7 +42,7 @@ in {
         packages = with pkgs; [
             (nerdfonts.override { fonts = [ "Inconsolata" ]; })
                 noto-fonts
-                noto-fonts-cjk
+                noto-fonts-cjk-sans
                 noto-fonts-emoji
         ];
 
@@ -90,9 +90,6 @@ in {
         networkmanager.enable = true;
     };
 
-    # Set your time zone.
-    time.timeZone = "${systemSettings.timezone}";
-
     # Select internationalisation properties.
     i18n.defaultLocale = "${systemSettings.locale}";
 
@@ -105,9 +102,6 @@ in {
             extraGroups = [ "networkmanager" "wheel" "video" "input" ];
         };
     };
-
-    # Allow unfree packages
-    nixpkgs.config.allowUnfree = true;
 
     environment = {
         sessionVariables = {
@@ -142,5 +136,5 @@ in {
         };
     };
 
-    system.stateVersion = "24.05"; #
+    system.stateVersion = "24.11";
 }

@@ -2,11 +2,17 @@
     description = "Rewrite of my first NixOS system flake";
 
     inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+        nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+        nixpkgs-darwin.url = "github:LnL7/nix-darwin/master";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+        darwin = {
+            url = "github:lnl7/nix-darwin";
+            inputs.nixpkgs.follows = "nixpkgs-darwin";
+        };
+
         home-manager = {
-            url			= "github:nix-community/home-manager/release-24.05";
+            url			= "github:nix-community/home-manager/release-24.11";
             inputs.nixpkgs.follows 	= "nixpkgs-unstable";
         };
 
@@ -30,12 +36,14 @@
             inputs.hyprland.follows = "hyprland";
         };
 
+        yt-x.url = "github:Benexl/yt-x";
         rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
         neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
         zen-browser.url = "github:MarceColl/zen-browser-flake";
     };
 
-    outputs = inputs@{  nixpkgs, nixpkgs-unstable, home-manager, ghostty, ... }:
+    # TODO: complete adding macos config
+    outputs = inputs@{ nixpkgs, nixpkgs-unstable, nixpkgs-darwin, home-manager, ... }:
     let
         systemSettings = {
             system = "x86_64-linux";
@@ -48,6 +56,10 @@
             config = { allowUnfree = true; };
         };
         pkgs-unstable = import nixpkgs-unstable {
+            system = systemSettings.system;
+            config = { allowUnfree = true; };
+        };
+        pkgs-darwin = import nixpkgs-darwin {
             system = systemSettings.system;
             config = { allowUnfree = true; };
         };
