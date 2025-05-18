@@ -10,6 +10,7 @@
             pkgs.openscad-unstable
             pkgs.prusa-slicer
             pkgs.blender
+            pkgs.krita
         ];
     };
 }

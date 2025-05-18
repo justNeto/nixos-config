@@ -10,6 +10,7 @@
             pkgs.zoom
             pkgs.slack
             pkgs.vesktop
+            pkgs.webcord-vencord
             pkgs.telegram-desktop
         ];
     };

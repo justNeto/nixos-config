@@ -203,50 +203,53 @@
 
                     function y() {
                         local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-                            yazi "$@" --cwd-file="$tmp"
-                            if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-                                builtin cd -- "$cwd"
-                                    fi
-                                    rm -f -- "$tmp"
+                        yazi "$@" --cwd-file="$tmp"
+                        if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+                            builtin cd -- "$cwd"
+                        fi
+                            rm -f -- "$tmp"
                     }
 
-                setopt interactive_comments
+                    # Change Yazi's CWD to PWD on subshell exit
+                    if [[ -n "$YAZI_ID" ]]; then
+                        function _yazi_cd() {
+                            ya emit cd "$PWD"
+                        }
+                        add-zsh-hook zshexit _yazi_cd
+                    fi
+
+                    setopt interactive_comments
                     stty stop undef
 
                     autoload -Uz add-zsh-hook
                     autoload -U colors && colors
 
                     red='%{'$(print -P '\e[38;5;196m')'%}'
-                            reset='%{'$(print -P '\e[0m')'%}'
-                                    green='%{'$(print -P '\e[1;32m')'%}'
-                                            gray='%{'$(print -P '\e[1;37m')'%}'
-                                                    yellow='%{'$(print -P '\e[1;33m')'%}'
-                                                            blue='%{'$(print -P '\e[1;34m')'%}'
-                                                                    black='%{'$(print -P '\e[1;30m')'%}'
-                                                                            greenl='%{'$(print -P '\e[1;32;5m')'%}'
+                    reset='%{'$(print -P '\e[0m')'%}'
+                    green='%{'$(print -P '\e[1;32m')'%}'
+                    ray='%{'$(print -P '\e[1;37m')'%}'
+                    yellow='%{'$(print -P '\e[1;33m')'%}'
+                    blue='%{'$(print -P '\e[1;34m')'%}'
+                    black='%{'$(print -P '\e[1;30m')'%}'
+                    greenl='%{'$(print -P '\e[1;32;5m')'%}'
+                    gitscript() {
+                        psvar[1]=$(gitstat)
+                    }
+                    add-zsh-hook precmd gitscript
+                    PROMPT=$'\n'"%240F$gray ╭─   ( $green($yellow%n$green) $blue| $green($yellow%~$green) $blue| $green($yellow%1v$green)$gray )"$'\n'"%240F$gray ╰─ $reset"
+                    bindkey -v
+                    export KEYTIMEOUT=1
+                    autoload edit-command-line; zle -N edit-command-line
+                    bindkey '^e' edit-command-line
+                    bindkey '^t' clear-screen
+                    bindkey -r '^l'
 
-                                                                                    gitscript() {
-                                                                                    psvar[1]=$(gitstat)
-                                                                                    }
+                    bindkey '^?' backward-delete-char # backspace key sequence
+                    bindkey "^[[P" delete-char # delete key sequence
 
-                                                                                    add-zsh-hook precmd gitscript
-
-                                                                                    PROMPT=$'\n'"%240F$gray ╭─   ( $green($yellow%n$green) $blue| $green($yellow%~$green) $blue| $green($yellow%1v$green)$gray )"$'\n'"%240F$gray ╰─ $reset"
-
-                                                                                    bindkey -v
-                                                                                    export KEYTIMEOUT=1
-
-                                                                                    autoload edit-command-line; zle -N edit-command-line
-                                                                                    bindkey '^e' edit-command-line
-                                                                                    bindkey '^t' clear-screen
-                                                                                    bindkey -r '^l'
-
-                                                                                    bindkey '^?' backward-delete-char # backspace key sequence
-                                                                                    bindkey "^[[P" delete-char # delete key sequence
-
-                                                                                    bindkey -s '^p' 'youtube-playlists\n' # select a playlist to listen to
-                                                                                    bindkey -s '^f' 'fmrun\n' # run fmrun
-                                                                                    '';
+                    bindkey -s '^p' 'youtube-playlists\n' # select a playlist to listen to
+                    bindkey -s '^f' 'fmrun\n' # run fmrun
+                    '';
             };
         };
     };
