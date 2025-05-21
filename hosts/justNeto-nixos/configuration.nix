@@ -306,10 +306,5 @@
         vulkan-validation-layers
         inputs.ghostty.packages.${pkgs.system}.default
         inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
-        # inputs.neovim-nightly.packages.${pkgs.system}.default
-    ];
-
-    nixpkgs.config.permittedInsecurePackages = [
-        "qbittorrent"
     ];
 }

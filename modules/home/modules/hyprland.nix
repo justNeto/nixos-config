@@ -17,6 +17,7 @@
             pkgs.imv
             pkgs.mako
             pkgs.nwg-displays
+            pkgs.nwg-look
             pkgs.pywal
             pkgs.pulsemixer
             pkgs.swww

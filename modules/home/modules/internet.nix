@@ -9,6 +9,7 @@
         home.packages = [
             pkgs.speedtest-cli
             pkgs.tor-browser
+            pkgs.qbittorrent-enhanced
         ];
     };
 }
