@@ -21,14 +21,14 @@
 
         home.sessionPath   = [
             "$HOME/.local/bin/"
-                "$HOME/.local/bin/"
-                "$HOME/.local/bin/system"
-                "$HOME/.local/bin/py-scripts"
-                "$HOME/.local/bin/utils"
-                "$HOME/.local/bin/utils/.local"
-                "$HOME/.local/bin/utils/.local/share"
-                "$HOME/.local/bin/utils/.local/share/nvim"
-                "$HOME/.local/bin/wallpaper"
+            "$HOME/.local/bin/"
+            "$HOME/.local/bin/system"
+            "$HOME/.local/bin/py-scripts"
+            "$HOME/.local/bin/utils"
+            "$HOME/.local/bin/utils/.local"
+            "$HOME/.local/bin/utils/.local/share"
+            "$HOME/.local/bin/utils/.local/share/nvim"
+            "$HOME/.local/bin/wallpaper"
         ];
 
         home.sessionVariables = {
@@ -80,7 +80,7 @@
 
                         "NixOS Wiki" = {
                             urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
-                            iconUpdateURL = "https://wiki.nixos.org/favicon.png";
+                            icon = "https://wiki.nixos.org/favicon.png";
                             updateInterval = 24 * 60 * 60 * 1000; # every day
                                 definedAliases = [ "@nw" ];
                         };
@@ -91,7 +91,7 @@
                         };
                     };
 
-                    extensions     = with inputs.firefox-addons.packages."x86_64-linux"; [
+                    extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
                         ublock-origin
                         darkreader
                         return-youtube-dislikes
@@ -118,7 +118,7 @@
                         full-screen-api.ignore-widgets = true;
                     };
 
-                    extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+                    extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
                         ublock-origin
                         darkreader
                         return-youtube-dislikes
@@ -139,14 +139,11 @@
             };
 
             zsh = {
-                enable			= true;
-                enableCompletion	= true;
+                enable = true;
+                enableCompletion = false;
+                autosuggestion.enable = true;
 
                 autocd = true;
-
-                autosuggestion = {
-                    enable		= true; # highlight	= "fg=#ff00ff,bg=cyan,bold,underline";
-                };
 
                 history = {
                     path = "$ZDOTDIR/history";
@@ -156,15 +153,11 @@
                 dotDir = ".config/shell";
 
                 shellAliases = {
-
-                    # Sudo aliases I need available
                     cs     = "sudo chmod +x";
                     sn     = "sudoedit";
                     rmd    = "sudo rm -rf";
                     srwpt  = "sudo cat /tmp/rwptimer";
                     awp    = "sudo chmod a+w";
-
-                    # Regular aliases
                     cd     = "z";
                     cp     = "cp -iv";
                     mv     = "mv -iv";
@@ -198,7 +191,7 @@
                     ehypr  = "nvim $HOME/.config/hypr/.";
                 };
 
-                initExtra = ''
+                initContent = ''
                     (cat ~/.cache/wal/sequences &)
 
                     function y() {
@@ -218,27 +211,6 @@
                         add-zsh-hook zshexit _yazi_cd
                     fi
 
-                    setopt interactive_comments
-                    stty stop undef
-
-                    autoload -Uz add-zsh-hook
-                    autoload -U colors && colors
-
-                    red='%{'$(print -P '\e[38;5;196m')'%}'
-                    reset='%{'$(print -P '\e[0m')'%}'
-                    green='%{'$(print -P '\e[1;32m')'%}'
-                    ray='%{'$(print -P '\e[1;37m')'%}'
-                    yellow='%{'$(print -P '\e[1;33m')'%}'
-                    blue='%{'$(print -P '\e[1;34m')'%}'
-                    black='%{'$(print -P '\e[1;30m')'%}'
-                    greenl='%{'$(print -P '\e[1;32;5m')'%}'
-                    gitscript() {
-                        psvar[1]=$(gitstat)
-                    }
-                    add-zsh-hook precmd gitscript
-                    PROMPT=$'\n'"%240F$gray ╭─   ( $green($yellow%n$green) $blue| $green($yellow%~$green) $blue| $green($yellow%1v$green)$gray )"$'\n'"%240F$gray ╰─ $reset"
-                    bindkey -v
-                    export KEYTIMEOUT=1
                     autoload edit-command-line; zle -N edit-command-line
                     bindkey '^e' edit-command-line
                     bindkey '^t' clear-screen
@@ -251,6 +223,150 @@
                     bindkey -s '^f' 'fmrun\n' # run fmrun
                     '';
             };
+
+            starship = {
+                enable = true;
+                settings = {
+                    format = ''
+                        ╭─   \( \[$username\] | \[$directory\]$git_branch \)
+                        $character
+                        '';
+                    add_newline = true;
+
+                    directory = {
+                        style = "bold yellow";
+                        read_only = " 󰌾";
+                        format = "[$path]($style)";
+                        truncate_to_repo = false;
+                        truncation_length = 0;
+                    };
+
+                    username = {
+                        style_user = "violet";
+                        format = "($user)";
+                        show_always = true;
+                    };
+
+                    character = {
+                        success_symbol = "[╰─](bold green)";
+                        error_symbol = "[╰─](bold red)";
+                    };
+
+                    git_branch = {
+                        symbol = " ";
+                        style = "white";
+                        format = " | \\[[$symbol$branch]($style)\\]";
+                    };
+
+                    git_status = {
+                        style = "red";
+                        format = "([$all_status]($style)) ";
+                    };
+
+                    git_state = {
+                        style = "blue";
+                        format = "( $state( $progress_current/$progress_total)) ";
+                    };
+
+                    git_commit = {
+                        tag_symbol = "  ";
+                    };
+
+                    aws.symbol = "  ";
+                    buf.symbol = " ";
+                    bun.symbol = " ";
+                    c.symbol = " ";
+                    cpp.symbol = " ";
+                    cmake.symbol = " ";
+                    conda.symbol = " ";
+                    crystal.symbol = " ";
+                    dart.symbol = " ";
+                    deno.symbol = " ";
+                    docker_context.symbol = " ";
+                    elixir.symbol = " ";
+                    elm.symbol = " ";
+                    fennel.symbol = " ";
+                    fossil_branch.symbol = " ";
+                    gcloud.symbol = "  ";
+                    golang.symbol = " ";
+                    guix_shell.symbol = " ";
+                    haskell.symbol = " ";
+                    haxe.symbol = " ";
+                    hg_branch.symbol = " ";
+                    java.symbol = " ";
+                    julia.symbol = " ";
+                    kotlin.symbol = " ";
+                    lua.symbol = " ";
+                    memory_usage.symbol = "󰍛 ";
+                    meson.symbol = "󰔷 ";
+                    nim.symbol = "󰆥 ";
+                    nix_shell.symbol = " ";
+                    nodejs.symbol = " ";
+                    ocaml.symbol = " ";
+                    package.symbol = "󰏗 ";
+                    perl.symbol = " ";
+                    php.symbol = " ";
+                    pijul_channel.symbol = " ";
+                    pixi.symbol = "󰏗 ";
+                    python.symbol = " ";
+                    rlang.symbol = "󰟔 ";
+                    ruby.symbol = " ";
+                    rust.symbol = "󱘗 ";
+                    scala.symbol = " ";
+                    swift.symbol = " ";
+                    zig.symbol = " ";
+                    gradle.symbol = " ";
+
+                    os.symbols = {
+                        Alpaquita = " ";
+                        Alpine = " ";
+                        AlmaLinux = " ";
+                        Amazon = " ";
+                        Android = " ";
+                        Arch = " ";
+                        Artix = " ";
+                        CachyOS = " ";
+                        CentOS = " ";
+                        Debian = " ";
+                        DragonFly = " ";
+                        Emscripten = " ";
+                        EndeavourOS = " ";
+                        Fedora = " ";
+                        FreeBSD = " ";
+                        Garuda = "󰛓 ";
+                        Gentoo = " ";
+                        HardenedBSD = "󰞌 ";
+                        Illumos = "󰈸 ";
+                        Kali = " ";
+                        Linux = " ";
+                        Mabox = " ";
+                        Macos = " ";
+                        Manjaro = " ";
+                        Mariner = " ";
+                        MidnightBSD = " ";
+                        Mint = " ";
+                        NetBSD = " ";
+                        NixOS = " ";
+                        Nobara = " ";
+                        OpenBSD = "󰈺 ";
+                        openSUSE = " ";
+                        OracleLinux = "󰌷 ";
+                        Pop = " ";
+                        Raspbian = " ";
+                        Redhat = " ";
+                        RedHatEnterprise = " ";
+                        RockyLinux = " ";
+                        Redox = "󰀘 ";
+                        Solus = "󰠳 ";
+                        SUSE = " ";
+                        Ubuntu = " ";
+                        Unknown = " ";
+                        Void = " ";
+                        Windows = "󰍲 ";
+                    };
+                };
+            };
+
         };
     };
 
@@ -268,16 +384,9 @@
 
         nvidia = {
             modesetting.enable = true;
-            open = false;
+            open = true;
             nvidiaSettings = true;
-            package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
-                version = "555.58.02";
-                sha256_64bit = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
-                sha256_aarch64 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
-                openSha256 = "sha256-8hyRiGB+m2hL3c9MDA/Pon+Xl6E788MZ50WrrAGUVuY=";
-                settingsSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
-                persistencedSha256 = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
-            };
+            package = config.boot.kernelPackages.nvidiaPackages.beta;
         };
     };
 
@@ -292,7 +401,6 @@
         gnumake
         openssl
         libvdpau
-        nerdfonts
         libnotify
         libva-utils
         vulkan-tools

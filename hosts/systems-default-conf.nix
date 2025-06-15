@@ -40,10 +40,10 @@ in {
     fonts = {
         enableDefaultPackages = true;
         packages = with pkgs; [
-            (nerdfonts.override { fonts = [ "Inconsolata" ]; })
-                noto-fonts
-                noto-fonts-cjk-sans
-                noto-fonts-emoji
+            nerd-fonts.inconsolata
+            noto-fonts
+            noto-fonts-cjk-sans
+            noto-fonts-emoji-blob-bin
         ];
 
         fontconfig = {
@@ -95,12 +95,13 @@ in {
 
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users = {
-        defaultUserShell = pkgs.zsh;
         users.${systemSettings.username} = {
+            shell = pkgs.zsh;
             isNormalUser = true;
             description = "Ernesto L";
             extraGroups = [ "networkmanager" "wheel" "video" "input" ];
         };
+
     };
 
     environment = {
@@ -127,7 +128,6 @@ in {
     programs = {
         ssh.startAgent = true;
         zsh.enable = true;
-
         hyprland = {
             enable = true;
             xwayland.enable = true;
@@ -136,5 +136,5 @@ in {
         };
     };
 
-    system.stateVersion = "24.11";
+    system.stateVersion = "25.05";
 }

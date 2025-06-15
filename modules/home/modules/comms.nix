@@ -9,8 +9,7 @@
         home.packages = [
             pkgs.zoom
             pkgs.slack
-            pkgs.vesktop
-            pkgs.webcord-vencord
+            pkgs.equibop
             pkgs.telegram-desktop
         ];
     };

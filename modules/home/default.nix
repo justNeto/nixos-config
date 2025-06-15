@@ -2,7 +2,7 @@
 {
     home.username = "${systemSettings.username}";
     home.homeDirectory = "/home/${systemSettings.username}";
-    home.stateVersion = "24.11";
+    home.stateVersion = "25.05";
 
     home.packages = [
         pkgs.ani-cli

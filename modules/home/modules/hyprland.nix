@@ -8,7 +8,7 @@
     config = lib.mkIf config.hyprlandwm.enable {
         home.packages = [
             pkgs.beauty-line-icon-theme
-            pkgs.dolphin
+            pkgs.kdePackages.dolphin
             pkgs.grimblast
             pkgs.hyprpicker
             pkgs.hyprcursor

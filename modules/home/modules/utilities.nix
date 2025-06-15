@@ -10,6 +10,10 @@
             pkgs.jq
             pkgs.pv
             pkgs.calc
+            pkgs.starship
+            pkgs.zsh-fast-syntax-highlighting
+            pkgs.zsh-autosuggestions
+            pkgs.zsh-autocomplete
         ];
     };
 }
