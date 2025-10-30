@@ -21,9 +21,11 @@
             pkgs.pywal
             pkgs.pulsemixer
             pkgs.swww
+            pkgs.hyprpaper
             pkgs.sweet
             pkgs.waybar
             pkgs.wl-clipboard
+            pkgs.waypaper
             pkgs.wofi
             pkgs.wev
             pkgs.wdisplays

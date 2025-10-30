@@ -10,6 +10,7 @@
             pkgs.calc
             pkgs.jq
             pkgs.pv
+            pkgs.man-pages
         ];
     };
 }

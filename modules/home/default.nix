@@ -21,6 +21,7 @@
         pkgs.obsidian
         pkgs.pipe-viewer
         pkgs.python3
+        pkgs.python312Packages.pyprusalink
         pkgs.ripgrep
         pkgs.tree
         pkgs.yt-dlp

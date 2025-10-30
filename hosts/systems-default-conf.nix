@@ -99,7 +99,7 @@ in {
             shell = pkgs.zsh;
             isNormalUser = true;
             description = "Ernesto L";
-            extraGroups = [ "networkmanager" "wheel" "video" "input" ];
+            extraGroups = [ "networkmanager" "wheel" "video" "input" "dialout" ];
         };
 
     };
