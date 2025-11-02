@@ -7,6 +7,7 @@
     home.packages = [
         pkgs.ani-cli
         pkgs.bat
+        pkgs.socat
         pkgs.btop
         pkgs.dogdns
         pkgs.fastfetch
@@ -24,7 +25,7 @@
         pkgs.python312Packages.pyprusalink
         pkgs.ripgrep
         pkgs.tree
-        pkgs.yt-dlp
+        # pkgs-unstable.yt-dlp
         pkgs.yazi
         pkgs.zoxide
     ];

@@ -36,7 +36,11 @@
             inputs.hyprland.follows = "hyprland";
         };
 
-        yt-x.url = "github:Benexl/yt-x";
+        yt-x = {
+            url = "github:Benexl/yt-x";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+        };
+
         rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
         neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
         zen-browser.url = "github:MarceColl/zen-browser-flake";
