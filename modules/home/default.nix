@@ -30,6 +30,8 @@
         pkgs.yazi
         pkgs.zoxide
         pkgs.waybar
+        pkgs.swww
+        pkgs.mako
     ];
 
     # Common, simple programs every system should have
