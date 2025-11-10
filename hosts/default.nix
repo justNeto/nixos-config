@@ -10,6 +10,10 @@ in
     specialArgs = { inherit inputs pkgs pkgs-unstable systemSettings; };
     modules = [
       home-manager.nixosModules.home-manager
+      inputs.mango.nixosModules.mango
+      {
+          programs.mango.enable = true;
+      }
       ./systems-default-conf.nix
       ./justNeto-nixos/configuration.nix
       ./justNeto-nixos/hardware-configuration.nix

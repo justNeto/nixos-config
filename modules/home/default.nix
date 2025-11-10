@@ -25,9 +25,11 @@
         pkgs.python312Packages.pyprusalink
         pkgs.ripgrep
         pkgs.tree
-        # pkgs-unstable.yt-dlp
+        pkgs.yt-dlp
+        pkgs.yewtube
         pkgs.yazi
         pkgs.zoxide
+        pkgs.waybar
     ];
 
     # Common, simple programs every system should have
@@ -43,7 +45,7 @@
             };
         };
 
-        yt-dlp.enable = true;
+        # yt-dlp.enable = true;
         yazi.enable = true;
         zoxide.enable = true;
     };
@@ -70,7 +72,7 @@
     };
 
     dconf = {
-        enable = true;
+        enable = false;
         settings = { "org/gnome/desktop/interface" = { color-scheme = "prefer-dark"; }; };
     };
 

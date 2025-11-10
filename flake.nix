@@ -16,11 +16,6 @@
             inputs.nixpkgs.follows 	= "nixpkgs-unstable";
         };
 
-        firefox-addons = {
-            url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-            inputs.nixpkgs.follows 	= "nixpkgs";
-        };
-
         ags = {
             url = "github:Aylur/ags";
             inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -30,20 +25,17 @@
             url = "github:ghostty-org/ghostty";
         };
 
-        hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
-        hyprland-plugins = {
-            url = "github:hyprwm/hyprland-plugins";
-            inputs.hyprland.follows = "hyprland";
-        };
-
-        yt-x = {
-            url = "github:Benexl/yt-x";
+        mango = {
+            url = "github:DreamMaoMao/mangowc";
             inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
 
-        rose-pine-hyprcursor.url = "github:ndom91/rose-pine-hyprcursor";
+        zen-browser = {
+            url = "github:0xc000022070/zen-browser-flake";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+        };
+
         neovim-nightly.url = "github:nix-community/neovim-nightly-overlay";
-        zen-browser.url = "github:MarceColl/zen-browser-flake";
     };
 
     # TODO: complete adding macos config

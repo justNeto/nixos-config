@@ -1,7 +1,7 @@
 { inputs, pkgs, systemSettings, config, ... }:
 {
     imports = [ ../../modules/core ];
-    bluetooth.enable = true;
+    bluetooth.enable = false;
 
     home-manager.users.${systemSettings.username} = {
         ai.enable = true;
@@ -17,7 +17,6 @@
         additions.enable = true;
         utilities.enable = true;
         dev-tools.enable = true;
-        hyprlandwm.enable = true;
 
         home.sessionPath   = [
             "$HOME/.local/bin/"
@@ -41,7 +40,7 @@
             NSFW_WALLPAPERS     = "$HOME/.local/wallpapers/NSFW_WALLPAPERS";
             SFW_WALLPAPERS      = "$HOME/.local/wallpapers/SFW_WALLPAPERS";
 
-            BROWSER             = "firefox";
+            BROWSER             = "zen";
             LANGUAGE            = "en_US.UTF-8";
             LC_ALL              = "en_US.UTF-8";
             LANG                = "en_US.UTF-8";
@@ -49,84 +48,6 @@
         };
 
         programs = {
-            firefox = {
-                enable = true;
-
-                profiles.justNeto = {
-                    id = 0;
-                    isDefault = true;
-                    name = "justNeto";
-
-                    settings = {
-                        full-screen-api.ignore-widgets = true;
-                    };
-
-                    search.engines = {
-                        "Nix Packages" = {
-                            urls = [{
-                                template = "https://search.nixos.org/packages?query={searchTerms}";
-                            }];
-
-                            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                            definedAliases = [ "@np" ];
-                        };
-
-                        "NixOS Opts" = {
-                            urls = [{
-                                template = "https://search.nixos.org/options?query={searchTerms}";
-                            }];
-                            definedAliases = [ "@no" ];
-                        };
-
-                        "NixOS Wiki" = {
-                            urls = [{ template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; }];
-                            icon = "https://wiki.nixos.org/favicon.png";
-                            updateInterval = 24 * 60 * 60 * 1000; # every day
-                                definedAliases = [ "@nw" ];
-                        };
-
-                        "Brave Search" = {
-                            urls = [{ template = "https://search.brave.com/search?q={searchTerms}"; }];
-                            definedAliases = [ "@bs" ];
-                        };
-                    };
-
-                    extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-                        ublock-origin
-                        darkreader
-                        return-youtube-dislikes
-                        vimium-c
-                    ];
-
-                    search.default = "Brave Search";
-
-                    search.force   = true;
-
-                    search.order   = [
-                        "Brave Search"
-                        "Nix Packages"
-                        "DuckDuck Go"
-                    ];
-
-                };
-
-                profiles.Profesional = {
-                    id = 1;
-                    name = "Profesional";
-
-                    settings = {
-                        full-screen-api.ignore-widgets = true;
-                    };
-
-                    extensions.packages = with inputs.firefox-addons.packages."x86_64-linux"; [
-                        ublock-origin
-                        darkreader
-                        return-youtube-dislikes
-                        vimium-c
-                    ];
-                };
-            };
-
             git = {
                 enable = true;
                 userName = "justNeto";
@@ -188,7 +109,6 @@
                     open   = "xdg-open";
                     erwp   = "nvim /tmp/rwptimer";
                     ewt    = "nvim /tmp/wtimer";
-                    ehypr  = "nvim $HOME/.config/hypr/.";
                 };
 
                 initContent = ''
@@ -366,7 +286,6 @@
                     };
                 };
             };
-
         };
     };
 
@@ -413,6 +332,6 @@
         vulkan-tools-lunarg
         vulkan-validation-layers
         inputs.ghostty.packages.${pkgs.system}.default
-        inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
+        inputs.zen-browser.packages.${pkgs.system}.default
     ];
 }

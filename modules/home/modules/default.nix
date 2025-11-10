@@ -9,7 +9,6 @@
         ./neovim.nix
         ./gaming.nix
         ./android.nix
-        ./hyprland.nix
         ./internet.nix
         ./unstable.nix
         ./dev-tools.nix
@@ -30,5 +29,4 @@
     additions.enable = lib.mkDefault false;
     utilities.enable = lib.mkDefault false;
     dev-tools.enable = lib.mkDefault false;
-    hyprlandwm.enable = lib.mkDefault false;
 }
