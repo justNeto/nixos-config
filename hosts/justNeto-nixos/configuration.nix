@@ -131,6 +131,7 @@
                         add-zsh-hook zshexit _yazi_cd
                     fi
 
+                    # INFO: Zsh overrides for terminal shortcuts
                     autoload edit-command-line; zle -N edit-command-line
                     bindkey '^e' edit-command-line
                     bindkey '^t' clear-screen
@@ -140,6 +141,7 @@
                     bindkey "^[[P" delete-char # delete key sequence
 
                     bindkey -s '^y' 'yt\n' # select a playlist to listen to
+                    bindkey -s '^s' 'tmux-sessionizer\n' # tmux sessionizer
                     bindkey -s '^f' 'fmrun\n' # run fmrun
                     '';
             };
