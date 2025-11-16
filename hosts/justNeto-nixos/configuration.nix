@@ -140,9 +140,8 @@
                     bindkey '^?' backward-delete-char # backspace key sequence
                     bindkey "^[[P" delete-char # delete key sequence
 
-                    bindkey -s '^y' 'yt\n' # select a playlist to listen to
-                    bindkey -s '^s' 'tmux-sessionizer\n' # tmux sessionizer
-                    bindkey -s '^f' 'fmrun\n' # run fmrun
+                    # bindkey -s '^f' 'tmux-sessionizer\n' # tmux sessionizer
+                    # bindkey -s '^y' 'fmrun\n' # run fmrun
                     '';
             };
 
@@ -333,6 +332,7 @@
         nvidia-vaapi-driver
         vulkan-tools-lunarg
         vulkan-validation-layers
+        glib
         inputs.ghostty.packages.${pkgs.system}.default
         inputs.zen-browser.packages.${pkgs.system}.default
     ];
