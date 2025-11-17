@@ -10,7 +10,9 @@
             pkgs.calc
             pkgs.jq
             pkgs.pv
-            pkgs.man-pages
+            pkgs.clang-tools
+            pkgs.clang-manpages
+            pkgs.clang
             pkgs.beauty-line-icon-theme
             pkgs.kdePackages.dolphin
             pkgs.grimblast
